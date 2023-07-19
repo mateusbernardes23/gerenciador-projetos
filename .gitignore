@@ -1,0 +1,44 @@
+# Arquivos de compilação
+*.class
+*.jar
+*.war
+*.ear
+
+# Arquivos do build
+target/
+build/
+bin/
+
+# Arquivos IDE
+.settings/
+.project
+.classpath
+
+# Logs
+*.log
+*.log.*
+logging/
+
+# Arquivos temporários
+*.tmp
+
+# Arquivos de configuração específicos do ambiente
+application.properties
+
+# Arquivos gerados automaticamente
+Generated/
+
+# Cache e diretórios temporários
+.cache/
+.temp/
+
+# Arquivos de dependências (dependendo da estrutura do projeto)
+lib/
+libs/
+
+# Arquivos de configuração específicos do editor
+.idea/
+.vscode/
+
+# Arquivos gerados durante o processo de deploy
+deploy/

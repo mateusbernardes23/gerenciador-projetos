@@ -43,38 +43,105 @@
 							<p:inputText value="#{projeto.nome}" />
 						</f:facet>
 					</p:cellEditor>
+				</p:column>
 
-				</p:column>
 				<p:column headerText="Data de Início">
-					<h:outputText value="#{projeto.dataInicio}">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
-					</h:outputText>
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{projeto.dataInicio}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</f:facet>
+						<f:facet name="input">
+							<p:datePicker id="popup" value="#{projeto.dataInicio}" />
+						</f:facet>
+					</p:cellEditor>
 				</p:column>
+
 				<p:column headerText="Gerente Responsável">
 					<h:outputText value="#{projeto.pessoa.nome}" />
 				</p:column>
+
 				<p:column headerText="Previsão de Término">
-					<h:outputText value="#{projeto.dataPrevisaoFim}">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
-					</h:outputText>
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{projeto.dataPrevisaoFim}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</f:facet>
+						<f:facet name="input">
+							<p:datePicker id="popup2"
+								value="#{projeto.dataPrevisaoFim}" />
+						</f:facet>
+					</p:cellEditor>
 				</p:column>
+
 				<p:column headerText="Data Real de Término">
-					<h:outputText value="#{projeto.dataFim}">
-						<f:convertDateTime pattern="dd/MM/yyyy" />
-					</h:outputText>
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{projeto.dataFim}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</f:facet>
+						<f:facet name="input">
+							<p:datePicker id="popup3" value="#{projeto.dataFim}" />
+						</f:facet>
+					</p:cellEditor>
 				</p:column>
+
 				<p:column headerText="Orçamento Total">
-					<h:outputText value="#{projeto.orcamento}" />
+				<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{projeto.orcamento}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{projeto.orcamento}" />
+						</f:facet>
+					</p:cellEditor>
 				</p:column>
+				
 				<p:column headerText="Descrição">
-					<h:outputText value="#{projeto.descricao}" />
+				<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{projeto.descricao}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{projeto.descricao}" />
+						</f:facet>
+					</p:cellEditor>
 				</p:column>
+
 				<p:column headerText="Status">
-					<h:outputText value="#{projeto.status.label}" />
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{projeto.status.label}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:selectOneMenu id="tipo-status" value="#{projeto.status}">
+								<f:selectItem itemLabel=":: Selecione ::" itemValue="#{null}" />
+								<f:selectItems value="#{projetoBean.status}" var="status"
+									itemValue="#{status}" itemLabel="#{status.label}" />
+							</p:selectOneMenu>
+						</f:facet>
+					</p:cellEditor>
+
 				</p:column>
+				
 				<p:column headerText="Risco">
-					<h:outputText value="#{projeto.risco.label}" />
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{projeto.risco.label}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:selectOneMenu id="tipo-risco" value="#{projeto.risco}">
+								<f:selectItem itemLabel=":: Selecione ::" itemValue="#{null}" />
+								<f:selectItems value="#{projetoBean.risco}" var="risco"
+									itemValue="#{risco}" itemLabel="#{risco.label}" />
+							</p:selectOneMenu>
+						</f:facet>
+					</p:cellEditor>
 				</p:column>
+				
 				<p:column style="width:35px">
 					<p:rowEditor />
 				</p:column>

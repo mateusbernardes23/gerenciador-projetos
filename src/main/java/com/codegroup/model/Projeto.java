@@ -12,8 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import com.codegroup.model.enums.Risco;
@@ -37,7 +35,7 @@ public class Projeto {
 	private Risco risco;
 	private Pessoa pessoa;
 	
-	public static final String LISTAR_TODOS_PROJETOS = "select Projeto from Projeto";
+//	public static final String LISTAR_TODOS_PROJETOS = "select Projeto from Projeto";
 	
 
 	public Projeto() {
@@ -138,7 +136,5 @@ public class Projeto {
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
-	
-	
 
 }

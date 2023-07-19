@@ -1,6 +1,5 @@
 package com.codegroup.managedBean;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,7 +7,6 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.RowEditEvent;
@@ -35,6 +33,7 @@ public class ProjetoBean {
 
 	public void iniciarBeanLista() {
 		projetos = projetoService.obterTodos();
+		iniciarBeanFormulario();
 	}
 	
 	public void iniciarBeanFormulario() {
@@ -44,13 +43,9 @@ public class ProjetoBean {
 	}
 
 	public void salvar() {
-		try {
-			projetoService.salvar(projeto);
-			FacesContext.getCurrentInstance().getExternalContext().redirect("");
-			iniciarBeanLista();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		projetoService.salvar(projeto);
+		mensagemPopup("Salvo com sucesso!");
+		iniciarBeanLista();
 	}
 	
 	public void editar(RowEditEvent<Projeto> event) {
@@ -111,5 +106,5 @@ public class ProjetoBean {
 	public void setPessoas(List<Pessoa> pessoas) {
 		this.pessoas = pessoas;
 	}
-
+	
 }

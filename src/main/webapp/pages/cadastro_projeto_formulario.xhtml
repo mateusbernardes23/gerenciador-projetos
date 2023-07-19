@@ -60,15 +60,28 @@
 				</p:selectOneMenu>
 			</p:panelGrid>
 			<p:commandButton action="#{projetoBean.salvar}"
-				value="Salvar Projeto" oncomplete="redirecionarParaPaginaAnterior()"/>
+				value="Salvar Projeto" oncomplete="handleCompletion(xhr, status, args)" update=":form:msgs">
+				</p:commandButton>
 			<p:button outcome="cadastro_projeto_lista" value="Cancelar" />
 			<br />
 		</p:panel>
 	</h:form>
 	<script>
+	
         // O script abaixo é usado para redirecionar para a página anterior após o salvamento usando JavaScript
         function redirecionarParaPaginaAnterior() {
             window.location.href = "#{request.contextPath}/projetos";
+        }
+    </script>
+    <script>
+        function handleCompletion(xhr, status, args) {
+            if (args.validationFailed) {
+                // Caso ocorra algum erro de validação, exiba as mensagens de erro
+                console.log('Erro! Ocorreu um erro ao salvar os dados.');
+            } else {
+                // Caso a operação de salvamento ocorra sem erros, execute o código de sucesso
+            	window.location.href = "#{request.contextPath}/projetos";
+            }
         }
     </script>
 </h:body>
