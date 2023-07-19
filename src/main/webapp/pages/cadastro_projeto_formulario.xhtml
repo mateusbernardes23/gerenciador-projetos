@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+	<title><ui:insert name="title" /> Code Group</title>
+</h:head>
+
+<h:body>
+	<h:form id="form">
+	<p:growl id="msgs" showDetail="true" />
+		<p:panel>
+			<f:facet name="header">
+				<h:outputText value="Cadastrar Projeto" />
+			</f:facet>
+
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Nome:" />
+				<p:inputText value="#{projetoBean.projeto.nome}" />
+
+				<p:outputLabel value="Data de Início:" />
+				<p:datePicker id="popup" value="#{projetoBean.projeto.dataInicio}" />
+
+				<p:outputLabel for="tipo-pessoa" value="Gerente Responsável:" />
+				<p:selectOneMenu id="tipo-pessoa" value="#{projetoBean.projeto.pessoa}">
+					<f:selectItem itemLabel=":: Selecione ::" itemValue="#{null}"/>
+					<f:selectItems value="#{projetoBean.pessoas}" var="pessoa" itemValue="#{pessoa}" itemLabel="#{pessoa.nome}"/>
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Previsão de Término:" />
+				<p:datePicker id="popup2"
+					value="#{projetoBean.projeto.dataPrevisaoFim}" />
+
+				<p:outputLabel value="Data Real de Término:" />
+				<p:datePicker id="popup3" value="#{projetoBean.projeto.dataFim}" />
+
+				<p:outputLabel value="Orçamento Total:" />
+				<p:inputText value="#{projetoBean.projeto.orcamento}" />
+
+				<p:outputLabel value="Descrição:" />
+				<p:inputText value="#{projetoBean.projeto.descricao}" />
+
+				<p:outputLabel for="tipo-status" value="Status:" />
+				<p:selectOneMenu id="tipo-status"
+					value="#{projetoBean.projeto.status}">
+					<f:selectItem itemLabel=":: Selecione ::" itemValue="#{null}" />
+					<f:selectItems value="#{projetoBean.status}" var="status"
+						itemValue="#{status}" itemLabel="#{status.label}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="tipo-risco" value="Risco" />
+				<p:selectOneMenu id="tipo-risco"
+					value="#{projetoBean.projeto.risco}">
+					<f:selectItem itemLabel=":: Selecione ::" itemValue="#{null}" />
+					<f:selectItems value="#{projetoBean.risco}" var="risco"
+						itemValue="#{risco}" itemLabel="#{risco.label}" />
+				</p:selectOneMenu>
+			</p:panelGrid>
+			<p:commandButton action="#{projetoBean.salvar}"
+				value="Salvar Projeto" oncomplete="redirecionarParaPaginaAnterior()"/>
+			<p:button outcome="cadastro_projeto_lista" value="Cancelar" />
+			<br />
+		</p:panel>
+	</h:form>
+	<script>
+        // O script abaixo é usado para redirecionar para a página anterior após o salvamento usando JavaScript
+        function redirecionarParaPaginaAnterior() {
+            window.location.href = "#{request.contextPath}/projetos";
+        }
+    </script>
+</h:body>
+</html>

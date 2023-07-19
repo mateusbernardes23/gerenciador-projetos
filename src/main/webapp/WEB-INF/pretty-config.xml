@@ -1,0 +1,17 @@
+<pretty-config
+	xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+
+	<url-mapping id="home">
+		<pattern value="/projetos" />
+		<view-id value="/pages/cadastro_projeto_lista.jsf" />
+		<action onPostback="false">#{projetoBean.iniciarBeanLista}</action>
+	</url-mapping>
+	<url-mapping id="cadastro">
+		<pattern value="/projetos/cadastro" />
+		<view-id value="/pages/cadastro_projeto_formulario.jsf" />
+		<action onPostback="false">#{projetoBean.iniciarBeanFormulario}</action>
+	</url-mapping>
+</pretty-config>
